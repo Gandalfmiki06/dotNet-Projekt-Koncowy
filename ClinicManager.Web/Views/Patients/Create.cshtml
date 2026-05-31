@@ -1,0 +1,11 @@
+@model Patient
+
+<h2>Nowy pacjent</h2>
+
+<form asp-action="Create" method="post">
+    <input asp-for="Pesel" placeholder="PESEL" />
+    <input asp-for="FirstName" placeholder="Imię" />
+    <input asp-for="LastName" placeholder="Nazwisko" />
+
+    <button type="submit">Zapisz</button>
+</form>

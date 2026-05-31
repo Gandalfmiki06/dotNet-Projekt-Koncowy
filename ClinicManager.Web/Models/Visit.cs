@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+
+[Index(nameof(Date), nameof(DoctorId))]
 public class Visit
 {
     public int Id { get; set; }

@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
+[Index(nameof(Pesel))]
 public class Patient
 {
     public int Id { get; set; }

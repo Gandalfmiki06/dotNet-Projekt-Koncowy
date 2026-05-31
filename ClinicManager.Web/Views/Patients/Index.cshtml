@@ -1,0 +1,22 @@
+@model List<Patient>
+
+<h2>Pacjenci</h2>
+
+<a asp-action="Create">Dodaj pacjenta</a>
+
+<table>
+    <tr>
+        <th>PESEL</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+    </tr>
+
+@foreach (var p in Model)
+{
+    <tr>
+        <td>@p.Pesel</td>
+        <td>@p.FirstName</td>
+        <td>@p.LastName</td>
+    </tr>
+}
+</table>
