@@ -1,18 +1,25 @@
 @model List<UserListItemViewModel>
 
-<h2>Users</h2>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<h2>Użytkownicy</h2>
 
 <a asp-action="Create" class="btn btn-primary mb-3">
-    Create New User
+    Dodaj nowego użytkownika
 </a>
 
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>UserName</th>
-            <th>Full Name</th>
-            <th>Roles</th>
-            <th style="width: 200px;">Actions</th>
+            <th>Nazwa użytkownika</th>
+            <th>Imię i Nazwisko</th>
+            <th>Role</th>
+            <th>Akcje</th>
         </tr>
     </thead>
 
@@ -24,25 +31,30 @@
             <td>@user.FullName</td>
 
             <td>
-                @if (user.Roles.Any())
+                @if (user.Role.Any())
                 {
-                    @string.Join(", ", user.Roles)
+                    @string.Join(", ", user.Role)
                 }
                 else
                 {
-                    <span class="text-muted">No role</span>
+                    <span class="text-muted">Bez Roli</span>
                 }
             </td>
 
             <td class="text-end">
                 <a asp-action="Edit" asp-route-id="@user.Id"
                    class="btn btn-sm btn-warning">
-                    Edit
+                    Edytuj
+                </a>
+
+                <a asp-action="ResetPassword" asp-route-id="@user.Id"
+                    class="btn btn-sm btn-danger">
+                    Resetuj hasło
                 </a>
 
                 <a asp-action="Delete" asp-route-id="@user.Id"
                    class="btn btn-sm btn-danger">
-                    Delete
+                    Usuń
                 </a>
             </td>
         </tr>
