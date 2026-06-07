@@ -14,16 +14,22 @@
         <nav class="navbar navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid d-flex justify-content-between align-items-center">
 
-                <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">
+                <a class="navbar-brand fw-bold" asp-controller="Dashboard" asp-action="Index">
                     ClinicManager
                 </a>
 
-                <div>
+                <div class="d-flex align-items-center gap-3">
                     @if (User.Identity != null && User.Identity.IsAuthenticated)
                     {
                         <span class="text-dark">
-                            Logged in as: @User.Identity.Name
+                            Zalogowano jako: @User.Identity.Name
                         </span>
+
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="m-0">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Wyloguj
+                            </button>
+                        </form>
                     }
                 </div>
 
