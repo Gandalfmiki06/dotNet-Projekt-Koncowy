@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+[Authorize]
 public class PatientsController : Controller
 {
     private readonly IPatientService _service;

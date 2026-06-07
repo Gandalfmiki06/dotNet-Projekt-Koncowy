@@ -12,8 +12,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddControllersWithViews();
-
 builder.Services.AddScoped<IPatientService, PatientService>();
 
 var app = builder.Build();
@@ -41,7 +39,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
