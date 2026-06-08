@@ -11,6 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddErrorDescriber<PolishIdentityErrorDescriber>()
     .AddDefaultTokenProviders();;
 
 builder.Services.AddScoped<IPatientService, PatientService>();

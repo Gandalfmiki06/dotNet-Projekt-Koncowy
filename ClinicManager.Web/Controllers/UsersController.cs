@@ -107,7 +107,7 @@ public class UsersController : Controller
             return NotFound();
 
         var roles = await _userManager.GetRolesAsync(user);
-        var role = roles.FirstOrDefault() ?? "";
+        var role = roles.First();
 
         return View(new EditUserViewModel
         {
@@ -143,7 +143,7 @@ public class UsersController : Controller
 
             if (currentRole.FirstOrDefault() != model.Role)
             {
-                ModelState.AddModelError("", "Nie możesz zmienić własnej roli.");
+                ModelState.AddModelError(string.Empty, "Nie możesz zmienić własnej roli.");
                 model.AvailableRoles = GetRoles();
                 return View(model);
             }
@@ -234,7 +234,7 @@ public class UsersController : Controller
             return RedirectToAction(nameof(Index));
 
         foreach (var error in result.Errors)
-            ModelState.AddModelError("", error.Description);
+            ModelState.AddModelError(string.Empty, error.Description);
 
         return RedirectToAction(nameof(Index));
     }

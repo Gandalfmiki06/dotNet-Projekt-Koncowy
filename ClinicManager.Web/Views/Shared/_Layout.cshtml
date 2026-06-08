@@ -25,12 +25,19 @@
                     </a>
                 }
 
-                <div class="d-flex align-items-center gap-3">
+                <div class="d-flex align-items-center gap-2">
                     @if (User.Identity != null && User.Identity.IsAuthenticated)
                     {
                         <span class="text-dark">
                             Zalogowano jako: @User.Identity.Name
                         </span>
+
+                        @if (!User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Account" asp-action="ChangePassword" class="btn btn-sm btn-primary">
+                                Zmień hasło
+                            </a>
+                        }
 
                         <form asp-controller="Account" asp-action="Logout" method="post" class="m-0">
                             <button type="submit" class="btn btn-sm btn-danger">
