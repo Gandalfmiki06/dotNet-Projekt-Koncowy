@@ -6,4 +6,6 @@ docker compose up -d
 
 dotnet restore
 
-dotnet run --project ClinicManager
+dotnet ef database update --project ClinicManager.Web
+
+dotnet run --project ClinicManager.Web

@@ -11,10 +11,10 @@ public class Visit
 
     // FK
     public int PatientId { get; set; }
-    public Patient Patient { get; set; }
+    public required Patient Patient { get; set; }
 
-    public string DoctorId { get; set; }
-    public ApplicationUser Doctor { get; set; }
+    public required string DoctorId { get; set; }
+    public required ApplicationUser Doctor { get; set; }
 
     public List<ClinicalNote> Notes { get; set; } = new();
 }
